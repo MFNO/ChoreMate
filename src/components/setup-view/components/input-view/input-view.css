@@ -1,10 +1,8 @@
-.name-input-container{
+.name-input-container, .item-display-content{
     margin-bottom:20px;
-}
-.name-input-field, .item-display-name {
-    width: 80%;
+    display: flex;
 }
 
-.item-display-name{
-    margin-bottom: 20px !important;
+.name-input-field, .item-display-name {
+    width: 80%;
 }

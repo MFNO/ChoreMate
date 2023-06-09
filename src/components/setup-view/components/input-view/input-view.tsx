@@ -7,18 +7,19 @@ import { InputItem } from "./types/input-item";
 
 interface props {
   name: string;
+  items: Array<InputItem>;
+  setItems: (items: Array<InputItem>) => void;
 }
 function InputView(InputProps: props) {
   function addItem() {
-    const newItems = [...items, newItem];
-    setItems(newItems);
+    const newItems = [...InputProps.items, newItem];
+    InputProps.setItems(newItems);
   }
   function removeItem(index: number) {
-    let itemsArray = [...items];
+    let itemsArray = [...InputProps.items];
     itemsArray.splice(index, 1);
-    setItems(itemsArray);
+    InputProps.setItems(itemsArray);
   }
-  const [items, setItems] = useState<Array<InputItem>>([]);
   const [newItem, setNewItem] = useState<InputItem>({ name: "" });
   return (
     <>
@@ -42,7 +43,7 @@ function InputView(InputProps: props) {
         </IconButton>
       </div>
       <div className="item-display-container">
-        {items.map((item, index) => {
+        {InputProps.items.map((item, index) => {
           return (
             <div key={index} className="item-display-content">
               <TextField

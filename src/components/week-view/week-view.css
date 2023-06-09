@@ -1,0 +1,10 @@
+.weekview-container{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+.test{
+    width: 100%;
+    background-color: red;
+    border: 1px black;
+}
