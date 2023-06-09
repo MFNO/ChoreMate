@@ -12,7 +12,8 @@ interface props {
 }
 function InputView(InputProps: props) {
   function addItem() {
-    const newItems = [...InputProps.items, newItem];
+    let capitalizeNewItem = { ...newItem, name: newItem.name[0].toUpperCase() + newItem.name.slice(1) }
+    const newItems = [...InputProps.items, capitalizeNewItem];
     InputProps.setItems(newItems);
   }
   function removeItem(index: number) {

@@ -20,11 +20,12 @@ function App() {
     let tempWeekDisplayItems: Array<WeekDisplayItem> = [];
     for (let x = 0; x < numberOfWeeks; x++) {
       let roommateChoreItems: Array<RoommateChoreItem> = [];
+      if (roommates.length === chores.length) roommates.reverse();
+
       for (let y = 0; y < chores.length; y++) {
         if (roommateIndex === roommates.length) {
           roommateIndex = 0;
         }
-        if (roommates.length === chores.length) roommates.reverse();
         let roommateChore: RoommateChoreItem = { chore: chores[y].name, roommate: roommates[roommateIndex].name };
         roommateChoreItems.push(roommateChore);
         roommateIndex++;
@@ -42,12 +43,12 @@ function App() {
         setRoommates={setRoommates}
         chores={chores}
         setChores={setChores}
+        numberOfWeeks={numberOfWeeks}
+        setNumberOfWeeks={setNumberOfWeeks}
       ></SetupView>
       <WeekView
         weekDisplayItems={weekDisplayItems}
-        numberOfWeeks={numberOfWeeks}
         roommates={roommates}
-        setNumberOfWeeks={setNumberOfWeeks}
         chores={chores}
       ></WeekView>
     </div>
