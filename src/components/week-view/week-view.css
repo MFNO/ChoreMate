@@ -1,9 +1,11 @@
-.weekview-container{
+.weekview-container {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 60%;
+    padding-right: 2rem;
 }
-.test{
+
+.test {
     width: 100%;
     background-color: red;
     border: 1px black;

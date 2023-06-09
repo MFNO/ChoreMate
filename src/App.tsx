@@ -24,6 +24,7 @@ function App() {
         if (roommateIndex === roommates.length) {
           roommateIndex = 0;
         }
+        if (roommates.length === chores.length) roommates.reverse();
         let roommateChore: RoommateChoreItem = { chore: chores[y].name, roommate: roommates[roommateIndex].name };
         roommateChoreItems.push(roommateChore);
         roommateIndex++;

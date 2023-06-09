@@ -12,16 +12,18 @@ function WeekItem(InputProps: props) {
   return (
     <>
       <div className="week-item-container">
-        <div className="week-header-container">
+        <div className="week-container">
           <div>Week {InputProps.weeknumber + 1}</div>
         </div>
-        {InputProps.roommateChores.map((roommateChore, index) => {
-          return (
-            <div key={index}>
-              {roommateChore.chore}:{roommateChore.roommate}
-            </div>
-          );
-        })}
+        <div className="week-container">
+          {InputProps.roommateChores.map((roommateChore, index) => {
+            return (
+              <div key={index}>
+                {roommateChore.chore} : {roommateChore.roommate}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );
