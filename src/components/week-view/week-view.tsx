@@ -3,7 +3,7 @@ import { TextField } from "@mui/material";
 
 import "./week-view.css";
 import { InputItem } from "../setup-view/components/input-view/types/input-item";
-import { WeekItem } from "./components/week-header/week-item";
+import { WeekItem } from "./components/week-item/week-item";
 
 interface props {
   roommates: Array<InputItem>;
@@ -12,6 +12,7 @@ interface props {
 
 function WeekView(InputProps: props) {
   const [numberOfWeeks, setNumberOfWeeks] = useState<number>(0);
+
   return (
     <>
       <div className="weekview-container">
@@ -26,10 +27,12 @@ function WeekView(InputProps: props) {
         />
         {[...Array(numberOfWeeks)].map((item, index) => (
           <>
-            <WeekItem></WeekItem>
-            <div className="test" key={index}>
-              je mama
-            </div>
+            <WeekItem
+              key={index}
+              roommates={InputProps.roommates}
+              weeknumber={index + 1}
+              chores={InputProps.chores}
+            ></WeekItem>
           </>
         ))}
       </div>
