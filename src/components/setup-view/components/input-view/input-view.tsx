@@ -3,7 +3,7 @@ import { AddCircle, RemoveCircle } from "@mui/icons-material";
 import React, { useState } from "react";
 
 import "./input-view.css";
-import { InputItem } from "./types/input-item";
+import { InputItem } from "../../../../shared/types/input-item";
 
 interface props {
   name: string;

@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { TextField } from "@mui/material";
 
 import "./week-view.css";
-import { InputItem } from "../setup-view/components/input-view/types/input-item";
+import { InputItem } from "../../shared/types/input-item";
 import { WeekItem } from "./components/week-item/week-item";
+import { WeekDisplayItem } from "../../shared/types/week-item";
 
 interface props {
   roommates: Array<InputItem>;
   chores: Array<InputItem>;
+  weekDisplayItems: Array<WeekDisplayItem>;
+  numberOfWeeks: number;
+  setNumberOfWeeks: (numberOfWeeks: number) => void;
 }
 
 function WeekView(InputProps: props) {
-  const [numberOfWeeks, setNumberOfWeeks] = useState<number>(0);
-
   return (
     <>
       <div className="weekview-container">
@@ -22,19 +24,20 @@ function WeekView(InputProps: props) {
           label="Weeks"
           variant="outlined"
           type="number"
-          value={numberOfWeeks}
-          onChange={(event) => setNumberOfWeeks(Number(event.target.value))}
+          value={InputProps.numberOfWeeks}
+          onChange={(event) =>
+            InputProps.setNumberOfWeeks(Number(event.target.value))
+          }
         />
-        {[...Array(numberOfWeeks)].map((item, index) => (
-          <>
+        {InputProps.weekDisplayItems.map((weekDisplay, index) => {
+          return (
             <WeekItem
               key={index}
-              roommates={InputProps.roommates}
-              weeknumber={index + 1}
-              chores={InputProps.chores}
+              roommateChores={weekDisplay.roommateChores}
+              weeknumber={weekDisplay.weekNumber}
             ></WeekItem>
-          </>
-        ))}
+          );
+        })}
       </div>
     </>
   );

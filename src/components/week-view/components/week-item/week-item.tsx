@@ -1,25 +1,26 @@
 import React from "react";
 
 import "./week-item.css";
-import { InputItem } from "../../../setup-view/components/input-view/types/input-item";
+import { RoommateChoreItem } from "../../../../shared/types/roommate-chore-item";
 
 interface props {
-  chores: Array<InputItem>;
-  roommates: Array<InputItem>;
+  roommateChores: Array<RoommateChoreItem>;
   weeknumber: number;
 }
 
 function WeekItem(InputProps: props) {
-  console.log("inputted roommates", InputProps.roommates);
-  console.log("inputted chores", InputProps.chores);
   return (
     <>
       <div className="week-item-container">
         <div className="week-header-container">
-          <div>Week {InputProps.weeknumber}</div>
+          <div>Week {InputProps.weeknumber + 1}</div>
         </div>
-        {InputProps.chores.map((chore, index) => {
-          return <div key={index}>{chore.name}</div>;
+        {InputProps.roommateChores.map((roommateChore, index) => {
+          return (
+            <div>
+              {roommateChore.chore}:{roommateChore.roommate}
+            </div>
+          );
         })}
       </div>
     </>

@@ -2,7 +2,7 @@ import React from "react";
 
 import "./setup-view.css";
 import { InputView } from "./components/input-view/input-view";
-import { InputItem } from "./components/input-view/types/input-item";
+import { InputItem } from "../../shared/types/input-item";
 interface props {
   roommates: Array<InputItem>;
   chores: Array<InputItem>;
