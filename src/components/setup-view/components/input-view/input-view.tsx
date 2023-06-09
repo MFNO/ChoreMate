@@ -13,9 +13,10 @@ function InputView(InputProps: props) {
     const newItems = [...items, newItem];
     setItems(newItems);
   }
-  function removeItem() {
-    const newItems = [...items, newItem];
-    setItems(newItems);
+  function removeItem(index: number) {
+    let itemsArray = [...items];
+    itemsArray.splice(index, 1);
+    setItems(itemsArray);
   }
   const [items, setItems] = useState<Array<InputItem>>([]);
   const [newItem, setNewItem] = useState<InputItem>({ name: "" });
@@ -41,36 +42,29 @@ function InputView(InputProps: props) {
         </IconButton>
       </div>
       <div className="item-display-container">
-        <div className="item-display-content">
-          {items.map((item, index) => {
-            console.log("index", index === items.length - 1);
-            return (
-              <>
-                <TextField
-                  key={index}
-                  InputProps={{ className: "item-display-name" }}
-                  id="outlined-basic"
-                  label={InputProps.name}
-                  variant="outlined"
-                  disabled={true}
-                  value={item.name}
-                />
-                {index === items.length - 1 && (
-                  <IconButton
-                    key={index + 1}
-                    onClick={() => removeItem()}
-                    color="primary"
-                    aria-label="upload picture"
-                    component="label"
-                    disabled={!newItem.name}
-                  >
-                    <RemoveCircle />
-                  </IconButton>
-                )}
-              </>
-            );
-          })}
-        </div>
+        {items.map((item, index) => {
+          return (
+            <div key={index} className="item-display-content">
+              <TextField
+                className="item-display-name"
+                id="outlined-basic"
+                label={InputProps.name}
+                variant="outlined"
+                disabled={true}
+                value={item.name}
+              />
+              <IconButton
+                onClick={() => removeItem(index)}
+                color="primary"
+                aria-label="upload picture"
+                component="label"
+                disabled={!newItem.name}
+              >
+                <RemoveCircle />
+              </IconButton>
+            </div>
+          );
+        })}
       </div>
     </>
   );
