@@ -17,7 +17,7 @@ function WeekItem(InputProps: props) {
         </div>
         {InputProps.roommateChores.map((roommateChore, index) => {
           return (
-            <div>
+            <div key={index}>
               {roommateChore.chore}:{roommateChore.roommate}
             </div>
           );
