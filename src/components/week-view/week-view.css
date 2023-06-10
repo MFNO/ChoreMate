@@ -4,3 +4,11 @@
     width: 60%;
     padding-right: 2rem;
 }
+
+.weekview-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}

@@ -2,18 +2,12 @@
     width: 100%;
 }
 
-.week-input-content {
-    margin-bottom: 20px;
-    padding: 8px;
+.input-content {
+    display: flex;
 }
 
 .setup-container {
     width: 40%;
     display: flex;
     flex-direction: column;
-}
-
-.input-content {
-    display: flex;
-    flex-direction: row;
 }
