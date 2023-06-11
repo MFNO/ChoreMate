@@ -1,5 +1,3 @@
-.week-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 1rem 1rem 0;
+.week-day-content {
+    width: 100%;
 }

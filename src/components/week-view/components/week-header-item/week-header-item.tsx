@@ -10,7 +10,6 @@ interface props {
 }
 
 function WeekHeaderItem(InputProps: props) {
-  console.log(InputProps.selectedMonthStartDay)
   if (InputProps.weeknumber === 1) {
     return (<>
       <div className="week-container">

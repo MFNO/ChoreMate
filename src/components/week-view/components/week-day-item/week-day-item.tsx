@@ -10,8 +10,8 @@ interface props {
 function WeekDayItem(InputProps: props) {
   return (
     <>
-      <div className="week-day-container">
-        <div>{dayjs().weekday(InputProps.DayNumber).format('dddd')}</div>
+      <div className="week-day-content">
+        <div>{dayjs().weekday(InputProps.DayNumber).format('ddd')}</div>
       </div>
     </>
   );

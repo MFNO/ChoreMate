@@ -24,14 +24,17 @@ const darkTheme = createTheme({
 function App() {
   const [roommates, setRoommates] = useState<Array<InputItem>>([]);
   const [chores, setChores] = useState<Array<InputItem>>([]);
-  const [roommatechores, setRoommatechores] = useState<Array<RoommateChoreItem>>([]);
+  const [roommateChorePerWeek, setRoommateChoresPerWeek] = useState<Array<Array<RoommateChoreItem>>>([]);
   const numberOfWeeks = 52;
 
 
+
   React.useEffect(() => {
+
     let roommateIndex = 0;
-    let roommateChoreItems: Array<RoommateChoreItem> = [];
+    let roommateChoreItems = [];
     for (let x = 0; x < numberOfWeeks; x++) {
+      let roommateChoreItemsWeekly: Array<RoommateChoreItem> = [];
       if (roommates.length > 0 && chores.length > 0) {
         if (roommates.length === chores.length) roommates.reverse();
 
@@ -40,12 +43,13 @@ function App() {
             roommateIndex = 0;
           }
           let roommateChore: RoommateChoreItem = { weekNumber: x, chore: chores[y].name, roommate: roommates[roommateIndex].name };
-          roommateChoreItems.push(roommateChore);
+          roommateChoreItemsWeekly.push(roommateChore);
           roommateIndex++;
         }
       }
+      roommateChoreItems.push(roommateChoreItemsWeekly);
     }
-    setRoommatechores(roommateChoreItems);
+    setRoommateChoresPerWeek(roommateChoreItems);
 
   }, [chores, roommates, numberOfWeeks]);
 
@@ -64,7 +68,7 @@ function App() {
           ></SetupView>
           <WeekView
             numberOfWeeks={numberOfWeeks}
-            roommateChores={roommatechores}
+            roommateChores={roommateChorePerWeek}
           ></WeekView>
         </div>
       </LocalizationProvider>

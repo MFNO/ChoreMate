@@ -5,10 +5,28 @@
     padding-right: 2rem;
 }
 
+.week-input-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.print-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 50px;
+
+}
+
+#print-button :hover {
+    cursor: pointer;
+}
+
 .weekview-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height: 90px;
+    margin-bottom: 20px;
 }

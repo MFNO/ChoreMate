@@ -1,11 +1,14 @@
-.week-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 1rem 1rem 0;
-}
-
 .week-day-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.week-item-container {
+    height: auto;
+}
+
+.chore {
+    display: flex;
+    justify-content: center;
 }
