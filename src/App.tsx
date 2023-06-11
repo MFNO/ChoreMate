@@ -9,6 +9,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import "./dayjs"
+import { BorderColor } from "@mui/icons-material";
 
 const darkTheme = createTheme({
   palette: {
@@ -16,9 +17,34 @@ const darkTheme = createTheme({
   },
   typography: {
     allVariants: {
-      color: "#A5D7E8"
+      color: "#D27685"
     },
   },
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          color: "#D27685",
+        }
+      }
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          "&.Mui-focused": {
+            color: "#D27685",
+          }
+        }
+      }
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          color: "#D27685"
+        }
+      }
+    },
+  }
 });
 
 function App() {

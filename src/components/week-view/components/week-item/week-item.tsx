@@ -14,7 +14,7 @@ interface props {
 }
 
 function WeekItem(InputProps: props) {
-  const colors = ["#9E4784", "#66347F", "#D27685"]
+  const colors = ["#9E4784", "#66347F", "#37306B"]
   return (
     <>
       <div className="week-item-container">
