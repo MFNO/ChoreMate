@@ -2,8 +2,8 @@ import React from "react";
 
 import "./week-item.css";
 import { Dayjs } from "dayjs";
-import { Typography } from "@mui/material";
 import { RoommateChoreItem } from "../../../../shared/types/roommate-chore-item";
+import { WeekHeaderItem } from "../week-header-item/week-header-item";
 
 interface props {
   roommateChores: Array<RoommateChoreItem>;
@@ -15,12 +15,7 @@ function WeekItem(InputProps: props) {
   return (
     <>
       <div className="week-item-container">
-        <div className="week-container">
-          {InputProps.selectedMonth && (<Typography variant="h5" className="weekview-header-title">
-            Week {InputProps.weeknumber + 1} : {`${InputProps.selectedMonth.add(InputProps.weeknumber, "week").format("MM/DD/YYYY")} - ${InputProps.selectedMonth.add(InputProps.weeknumber + 1, "week").format("MM/DD/YYYY")}`}
-          </Typography>)}
-
-        </div>
+        <WeekHeaderItem weeknumber={InputProps.weeknumber} selectedMonthStartDay={InputProps.selectedMonth?.startOf('M')} ></WeekHeaderItem >
         <div className="chore-container">
           {InputProps.roommateChores && InputProps.roommateChores.map((roommateChore, index) => {
             return roommateChore.weekNumber === InputProps.weeknumber ? (
