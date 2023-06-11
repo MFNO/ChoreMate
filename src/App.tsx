@@ -3,7 +3,6 @@ import { SetupView } from "./components/setup-view/setup-view";
 import { InputItem } from "../src/shared/types/input-item";
 import { WeekView } from "./components/week-view/week-view";
 import "./App.css";
-import { WeekDisplayItem } from "./shared/types/week-item";
 import { RoommateChoreItem } from "./shared/types/roommate-chore-item";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -24,33 +23,29 @@ const darkTheme = createTheme({
 function App() {
   const [roommates, setRoommates] = useState<Array<InputItem>>([]);
   const [chores, setChores] = useState<Array<InputItem>>([]);
-  const [numberOfWeeks, setNumberOfWeeks] = useState<number>(4);
-  const [weekDisplayItems, setWeekDisplayItems] = useState<
-    Array<WeekDisplayItem>
-  >([]);
+  const [roommatechores, setRoommatechores] = useState<Array<RoommateChoreItem>>([]);
+  const numberOfWeeks = 52;
 
 
   React.useEffect(() => {
     let roommateIndex = 0;
-    let tempWeekDisplayItems: Array<WeekDisplayItem> = [];
+    let roommateChoreItems: Array<RoommateChoreItem> = [];
     for (let x = 0; x < numberOfWeeks; x++) {
       if (roommates.length > 0 && chores.length > 0) {
-        let roommateChoreItems: Array<RoommateChoreItem> = [];
         if (roommates.length === chores.length) roommates.reverse();
 
         for (let y = 0; y < chores.length; y++) {
           if (roommateIndex === roommates.length) {
             roommateIndex = 0;
           }
-          let roommateChore: RoommateChoreItem = { chore: chores[y].name, roommate: roommates[roommateIndex].name };
+          let roommateChore: RoommateChoreItem = { weekNumber: x, chore: chores[y].name, roommate: roommates[roommateIndex].name };
           roommateChoreItems.push(roommateChore);
           roommateIndex++;
         }
-        const weekDisplayItem: WeekDisplayItem = { weekNumber: x, roommateChores: roommateChoreItems };
-        tempWeekDisplayItems.push(weekDisplayItem);
       }
-      setWeekDisplayItems(tempWeekDisplayItems);
     }
+    setRoommatechores(roommateChoreItems);
+
   }, [chores, roommates, numberOfWeeks]);
 
   return (
@@ -68,10 +63,7 @@ function App() {
           ></SetupView>
           <WeekView
             numberOfWeeks={numberOfWeeks}
-            setNumberOfWeeks={setNumberOfWeeks}
-            weekDisplayItems={weekDisplayItems}
-            roommates={roommates}
-            chores={chores}
+            roommateChores={roommatechores}
           ></WeekView>
         </div>
       </LocalizationProvider>

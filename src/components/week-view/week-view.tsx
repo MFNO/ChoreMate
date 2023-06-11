@@ -1,51 +1,38 @@
 import React from "react";
 
 import "./week-view.css";
-import { InputItem } from "../../shared/types/input-item";
 import { WeekItem } from "./components/week-item/week-item";
-import { WeekDisplayItem } from "../../shared/types/week-item";
-import { Select, MenuItem, Typography, } from "@mui/material";
+import { Typography, } from "@mui/material";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
+import { RoommateChoreItem } from "../../shared/types/roommate-chore-item";
 
 
 interface props {
-  roommates: Array<InputItem>;
-  chores: Array<InputItem>;
-  weekDisplayItems: Array<WeekDisplayItem>;
+  roommateChores: Array<RoommateChoreItem>;
   numberOfWeeks: number;
-  setNumberOfWeeks: (numberOfWeeks: number) => void;
 }
 
 function WeekView(InputProps: props) {
+  const [selectedMonth, setSelectedMonth] = React.useState<Dayjs | null>(dayjs());
+  console.log(selectedMonth);
   return (
     <>
-
       <div className="weekview-container" >
         <div className="weekview-header">
           <Typography variant="h2" className="weekview-header-title">Calendar</Typography>
           <div className="week-input-content">
-            <DatePicker defaultValue={dayjs()} views={['month']} />
-            <Select
-              id="week-number-select"
-              value={InputProps.numberOfWeeks}
-              label="Number"
-              onChange={(event) =>
-                InputProps.setNumberOfWeeks(Number(event.target.value))
-              }
-            >
-              {[...Array(10)].map((item, index) => {
-                return (<MenuItem key={index} value={index + 1}>{index + 1}</MenuItem>)
-              })}
-            </Select>
+            <DatePicker value={selectedMonth}
+              onChange={(newValue) => setSelectedMonth(newValue)} views={['month']} />
           </div>
         </div>
-        {InputProps.weekDisplayItems.map((weekDisplay, index) => {
+        {[...Array(InputProps.numberOfWeeks)].map((item, index) => {
           return (
             <WeekItem
               key={index}
-              roommateChores={weekDisplay.roommateChores}
-              weeknumber={weekDisplay.weekNumber}
+              roommateChores={InputProps.roommateChores}
+              weeknumber={index}
+              selectedMonth={selectedMonth}
             ></WeekItem>
           );
         })}
