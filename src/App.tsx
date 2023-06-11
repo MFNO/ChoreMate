@@ -7,10 +7,17 @@ import { WeekDisplayItem } from "./shared/types/week-item";
 import { RoommateChoreItem } from "./shared/types/roommate-chore-item";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
+  },
+  typography: {
+    allVariants: {
+      color: "#A5D7E8"
+    },
   },
 });
 
@@ -48,23 +55,26 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <div className="content">
-        <SetupView
-          roommates={roommates}
-          setRoommates={setRoommates}
-          chores={chores}
-          setChores={setChores}
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
 
-        ></SetupView>
-        <WeekView
-          numberOfWeeks={numberOfWeeks}
-          setNumberOfWeeks={setNumberOfWeeks}
-          weekDisplayItems={weekDisplayItems}
-          roommates={roommates}
-          chores={chores}
-        ></WeekView>
-      </div>
+        <CssBaseline />
+        <div className="content">
+          <SetupView
+            roommates={roommates}
+            setRoommates={setRoommates}
+            chores={chores}
+            setChores={setChores}
+
+          ></SetupView>
+          <WeekView
+            numberOfWeeks={numberOfWeeks}
+            setNumberOfWeeks={setNumberOfWeeks}
+            weekDisplayItems={weekDisplayItems}
+            roommates={roommates}
+            chores={chores}
+          ></WeekView>
+        </div>
+      </LocalizationProvider>
     </ThemeProvider>
   );
 }

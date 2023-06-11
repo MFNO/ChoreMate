@@ -4,7 +4,10 @@ import "./week-view.css";
 import { InputItem } from "../../shared/types/input-item";
 import { WeekItem } from "./components/week-item/week-item";
 import { WeekDisplayItem } from "../../shared/types/week-item";
-import { Select, MenuItem, Typography } from "@mui/material";
+import { Select, MenuItem, Typography, } from "@mui/material";
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import dayjs from "dayjs";
+
 
 interface props {
   roommates: Array<InputItem>;
@@ -22,6 +25,7 @@ function WeekView(InputProps: props) {
         <div className="weekview-header">
           <Typography variant="h2" className="weekview-header-title">Calendar</Typography>
           <div className="week-input-content">
+            <DatePicker defaultValue={dayjs()} views={['month']} />
             <Select
               id="week-number-select"
               value={InputProps.numberOfWeeks}

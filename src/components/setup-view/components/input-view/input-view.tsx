@@ -60,7 +60,7 @@ function InputView(InputProps: props) {
                 color="primary"
                 aria-label="upload picture"
                 component="label"
-                disabled={!newItem.name}
+                disabled={false}
               >
                 <RemoveCircle />
               </IconButton>
