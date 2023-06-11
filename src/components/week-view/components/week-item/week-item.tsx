@@ -5,7 +5,7 @@ import { Dayjs } from "dayjs";
 import { RoommateChoreItem } from "../../../../shared/types/roommate-chore-item";
 import { WeekHeaderItem } from "../week-header-item/week-header-item";
 import { WeekDayItem } from "../week-day-item/week-day-item";
-import { Typography } from "@mui/material";
+import { Checkbox, Typography } from "@mui/material";
 
 interface props {
   roommateChores: Array<RoommateChoreItem>;
@@ -27,6 +27,7 @@ function WeekItem(InputProps: props) {
             return roommateChore.weekNumber === InputProps.weeknumber ? (
               <div style={{ backgroundColor: colors[index % 3] }} className="chore" key={index}>
                 <Typography sx={{ color: "white" }} variant="h5">{roommateChore.chore} : {roommateChore.roommate}</Typography>
+                <Checkbox />
               </div>
             ) : (<></>);
           })}
