@@ -2,6 +2,9 @@
 
 Simple one-page react application to allow roommates to settle the pesky weekly chore assignemnt
 
+Visit the website here:
+https://dhipbrbcoutdm.cloudfront.net
+
 
 ## Available Scripts
 
