@@ -9,7 +9,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import "./dayjs"
-import { BorderColor } from "@mui/icons-material";
 
 const darkTheme = createTheme({
   palette: {
@@ -52,7 +51,6 @@ function App() {
   const [chores, setChores] = useState<Array<InputItem>>([]);
   const [roommateChorePerWeek, setRoommateChoresPerWeek] = useState<Array<Array<RoommateChoreItem>>>([]);
   const numberOfWeeks = 52;
-
 
 
   React.useEffect(() => {

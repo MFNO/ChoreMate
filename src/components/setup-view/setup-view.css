@@ -11,3 +11,18 @@
     display: flex;
     flex-direction: column;
 }
+
+@media screen and (max-width: 550px) {
+    .input-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .setup-container {
+        width: 100%;
+    }
+
+    .input-container {
+        width: 100%;
+    }
+}

@@ -15,3 +15,12 @@
 .item-display-name {
     width: 80%;
 }
+
+@media screen and (max-width: 550px) {
+
+    .name-input-container,
+    .item-display-content {
+        justify-content: center;
+    }
+
+}

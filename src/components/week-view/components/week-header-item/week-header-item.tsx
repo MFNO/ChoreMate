@@ -14,8 +14,8 @@ function WeekHeaderItem(InputProps: props) {
     return (<>
       <div className="week-container">
         {InputProps.selectedMonthStartDay &&
-          <Typography variant="h5" className="weekview-header-title">
-            Week {InputProps.weeknumber + 1} : {`${InputProps.selectedMonthStartDay.add(1, "week").format("MM/DD/YYYY")} - ${InputProps.selectedMonthStartDay.add(InputProps.weeknumber + 1, "week").format("MM/DD/YYYY")}`}
+          <Typography variant="h6" className="weekview-header-title">
+            Week {`${InputProps.selectedMonthStartDay.add(1, "week").format("MM/DD/YYYY")} - ${InputProps.selectedMonthStartDay.add(InputProps.weeknumber + 1, "week").format("MM/DD/YYYY")}`}
           </Typography>
         }
       </div>
@@ -24,8 +24,8 @@ function WeekHeaderItem(InputProps: props) {
   return (<>
     <div className="week-container">
       {InputProps.selectedMonthStartDay &&
-        <Typography variant="h5" className="weekview-header-title">
-          Week {InputProps.weeknumber + 1} : {`${InputProps.selectedMonthStartDay.add(InputProps.weeknumber, "week").format("MM/DD/YYYY")} - ${InputProps.selectedMonthStartDay.add(InputProps.weeknumber + 1, "week").format("MM/DD/YYYY")}`}
+        <Typography variant="h6" className="weekview-header-title">
+          Week {`${InputProps.selectedMonthStartDay.add(InputProps.weeknumber, "week").format("MM/DD/YYYY")} - ${InputProps.selectedMonthStartDay.add(InputProps.weeknumber + 1, "week").format("MM/DD/YYYY")}`}
         </Typography>
       }
     </div>
