@@ -84,7 +84,7 @@ jobs:
         with:
           command: cp
           source: ./build/static/
-          destination: s3://me-me-me-bucket/static/
+          destination: s3://react-cors-spa-zs0xp5znfh/static/
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: us-east-1
