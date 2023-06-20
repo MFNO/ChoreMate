@@ -52,7 +52,7 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: us-east-1
       - uses: keithweaver/aws-s3-github-action@v1.0.0
-        name: Copylogo512
+        name: Copy logo512
         with:
           command: cp
           source: ./build/logo512.png
