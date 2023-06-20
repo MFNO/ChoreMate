@@ -1,0 +1,92 @@
+name: Deploy Node Build to AWS S3 CI
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
+      - uses: keithweaver/aws-s3-github-action@v1.0.0
+        name: Copy asset manifest
+        with:
+          command: cp
+          source: ./build/asset-manifest.json
+          destination: s3://react-cors-spa-zs0xp5znfh/asset-manifest.json
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-1
+      - uses: keithweaver/aws-s3-github-action@v1.0.0
+        name: Copy favicon
+        with:
+          command: cp
+          source: ./build/favicon.ico
+          destination: s3://react-cors-spa-zs0xp5znfh/favicon.ico
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-1
+      - uses: keithweaver/aws-s3-github-action@v1.0.0
+        name: Copy index
+        with:
+          command: cp
+          source: ./build/index.html
+          destination: s3://react-cors-spa-zs0xp5znfh/index.html
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-1
+      - uses: keithweaver/aws-s3-github-action@v1.0.0
+        name: Copy logo192
+        with:
+          command: cp
+          source: ./build/logo192.png
+          destination: s3://react-cors-spa-zs0xp5znfh/logo192.png
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-1
+      - uses: keithweaver/aws-s3-github-action@v1.0.0
+        name: Copylogo512
+        with:
+          command: cp
+          source: ./build/logo512.png
+          destination: s3://react-cors-spa-zs0xp5znfh/logo512.png
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-1
+      - uses: keithweaver/aws-s3-github-action@v1.0.0
+        name: Copy manifest
+        with:
+          command: cp
+          source: ./build/manifest.json
+          destination: s3://react-cors-spa-zs0xp5znfh/manifest.json
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-1
+      - uses: keithweaver/aws-s3-github-action@v1.0.0
+        name: Copy robots
+        with:
+          command: cp
+          source: ./build/robots.txt
+          destination: s3://react-cors-spa-zs0xp5znfh/robots.txt
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-1
+
+      - uses: keithweaver/aws-s3-github-action@v1.0.0 # Verifies the recursive flag
+        name: Copy Folder
+        with:
+          command: cp
+          source: ./build/static/
+          destination: s3://me-me-me-bucket/static/
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-1
+          flags: --recursive
