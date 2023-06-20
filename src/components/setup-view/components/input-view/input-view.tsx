@@ -21,6 +21,14 @@ function InputView(InputProps: props) {
     itemsArray.splice(index, 1);
     InputProps.setItems(itemsArray);
   }
+
+  function keyPress(e: any) {
+    if (e.key === "Enter") {
+      addItem();
+      setNewItem({name: ''});
+    }
+  }
+
   const [newItem, setNewItem] = useState<InputItem>({ name: "" });
   return (
     <>
@@ -31,6 +39,7 @@ function InputView(InputProps: props) {
           label={InputProps.name}
           variant="outlined"
           value={newItem.name}
+          onKeyDown={keyPress}
           onChange={(event) => setNewItem({ name: event.target.value })}
         />
         <IconButton
